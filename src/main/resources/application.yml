@@ -10,7 +10,7 @@ spring:
       uri: http://localhost:8888
       request-connect-timeout: 5000 #5s
       request-read-timeout: 5000 #5s
-      fail-fast: true
+      fail-fast: false
       retry:
         max-attempts: 6
         initial-interval: 1000
@@ -39,3 +39,6 @@ management:
     web:
       exposure:
         include: refresh
+
+polar:
+  greeting: Welcome to the local book catalog!
