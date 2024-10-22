@@ -46,6 +46,18 @@ dependencyManagement {
 	}
 }
 
+bootBuildImage {
+	imageName="${project.name}"
+	environment=["BP_JVM_VERSION":"17.*"]
+
+	docker {
+		publishRegistry { //The below info will be passed from Gradle properties
+			username=project.findProperty("registryUsername")
+			password=project.findProperty("registryToken")
+			url=project.findProperty("registryUrl")
+		}
+	}
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
