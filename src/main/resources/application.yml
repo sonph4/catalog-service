@@ -18,6 +18,11 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         multiplier: 1.1
+  security:
+    oauth2:
+      resourceserver:
+        jwt: # OAuth2 doesn't enforce a data format for Access tokens, so we must be explicit about our choice
+          issuer-uri: http://localhost:8080/realms/PolarBookshop
   datasource:
     username: user
     password: password
