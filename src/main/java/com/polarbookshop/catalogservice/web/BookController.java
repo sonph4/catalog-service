@@ -3,13 +3,15 @@ package com.polarbookshop.catalogservice.web;
 import com.polarbookshop.catalogservice.domain.Book;
 import com.polarbookshop.catalogservice.service.BookService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("books")
 public class BookController {
-
+    private Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -29,6 +31,7 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book addBook(@RequestBody @Valid Book book) {
+        log.info("Got add book request: {}", book.toString());
         return bookService.addBookToCatalog(book);
     }
 
